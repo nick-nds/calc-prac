@@ -1,4 +1,10 @@
+"use client"
+
+import { useEffect } from 'react'
 export default function Head() {
+  useEffect(()=>{
+    import("bootstrap/dist/js/bootstrap");
+  },[])
   return (
     <>
       <title>Create Next App</title>
