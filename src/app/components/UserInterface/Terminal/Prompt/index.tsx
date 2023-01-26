@@ -88,13 +88,19 @@ export const Prompt = (props: any) => {
   }, [])
 
   const checkAnswer = (val: number) => {
-    const ans = operationsMap[operator].action(props.expression.a, props.expression.b)
-    if (val == ans) {
+    const ans = roundNumber(operationsMap[operator].action(props.expression.a, props.expression.b))
+    const inputVal = roundNumber(Number(val))
+    console.log("ans", inputVal, typeof inputVal, ans)
+    if (inputVal == ans) {
       setCorrect('success')
     } else {
       setCorrect('danger')
     }
     setAnswer(ans)
+  }
+
+  const roundNumber = (num: number) => {
+    return Math.round((num + Number.EPSILON) * 100) / 100
   }
 
   return <>
